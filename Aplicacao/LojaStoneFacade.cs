@@ -11,15 +11,15 @@ namespace Aplicacao
 {
   public class LojaStoneFacade
   {
-    private IRepositorioCliente _repositorioCliente;
-    private IRepositorioItem _repositorioItem;
-    private IRepositorioPedido _repositorioPedido;
+    private IRepositorioCliente repositorioCliente;
+    private IRepositorioItem repositorioItem;
+    private IRepositorioPedido repositorioPedido;
 
     public LojaStoneFacade(IRepositorioCliente repositorioCliente, IRepositorioItem repositorioItem, IRepositorioPedido repositorioPedido)
     {
-      _repositorioCliente = repositorioCliente;
-      _repositorioItem = repositorioItem;
-      _repositorioPedido = repositorioPedido;
+      this.repositorioCliente = repositorioCliente;
+      this.repositorioItem = repositorioItem;
+      this.repositorioPedido = repositorioPedido;
 
     }
 
@@ -36,7 +36,7 @@ namespace Aplicacao
         return new RetornoCadastrarCliente() { Sucesso = false, Mensagem = mensagemValidacao };
       }
 
-      _repositorioCliente.CadastrarCliente(cliente);
+      repositorioCliente.CadastrarCliente(cliente);
 
       return new RetornoCadastrarCliente() { Sucesso = true, Id = cliente.Id };
     }
@@ -54,18 +54,18 @@ namespace Aplicacao
         return new RetornoAtualizarCliente() { Sucesso = false, Mensagem = mensagemValidacao };
       }
 
-      _repositorioCliente.AtualizarCliente(cliente);
+      repositorioCliente.AtualizarCliente(cliente);
 
       return new RetornoAtualizarCliente() { Sucesso = true, Id = cliente.Id };
     }
 
     public List<ClienteDTO> BuscarClientes()
     {
-      var clientes = _repositorioCliente.BuscarClientes();
+      var clientes = repositorioCliente.BuscarClientes();
 
       var listaRetorno = new List<ClienteDTO>();
 
-      clientes.ForEach(cliente => 
+      clientes.ForEach(cliente =>
       {
         listaRetorno.Add(Mapper.Map<ClienteDTO>(cliente));
       });
@@ -86,7 +86,7 @@ namespace Aplicacao
         return new RetornoCadastrarItem() { Sucesso = false, Mensagem = mensagemValidacao };
       }
 
-      _repositorioItem.CadastrarItem(item);
+      repositorioItem.CadastrarItem(item);
 
       return new RetornoCadastrarItem() { Sucesso = true, Id = item.Id };
     }
@@ -104,14 +104,14 @@ namespace Aplicacao
         return new RetornoAtualizarItem() { Sucesso = false, Mensagem = mensagemValidacao };
       }
 
-      _repositorioItem.AtualizarItem(item);
+      repositorioItem.AtualizarItem(item);
 
       return new RetornoAtualizarItem() { Sucesso = true, Id = item.Id };
     }
 
     public List<ItemDTO> BuscarItems()
     {
-      var items = _repositorioItem.BuscarItens();
+      var items = repositorioItem.BuscarItens();
 
       var listaRetorno = new List<ItemDTO>();
 
@@ -135,7 +135,7 @@ namespace Aplicacao
     //  var itens = ItensDTO.Select(itemDTO => Mapper.Map<Item>(itemDTO)).ToList();
 
     //  var pedido = FabricaPedido.CriarPedido(cliente, itens);
-      
+
     //  _repositorioPedido.CriarPedido(pedido);
 
     //  return new RetornoCriarPedido() { Sucesso = true, Id = pedido.Id };

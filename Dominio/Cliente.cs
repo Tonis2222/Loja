@@ -4,6 +4,8 @@ namespace Dominio
 {
   public class Cliente
   {
+    private const int TAMANHO_MAXIMO_NOME = 200;
+
     public int Id { get; set; }
     public string Nome { get; set; }
     public long CPF { get; set; }
@@ -17,9 +19,21 @@ namespace Dominio
         return false;
       }
 
+      if (Nome.Length > TAMANHO_MAXIMO_NOME)
+      {
+        mensagemValidacao = $"Nome deve ter no máximo {TAMANHO_MAXIMO_NOME} caracteres.";
+        return false;
+      }
+
       if (CPF < 1)
       {
         mensagemValidacao = "CPF não informado.";
+        return false;
+      }
+
+      if (CPF > 99999999999)
+      {
+        mensagemValidacao = "CPF inválido.";
         return false;
       }
 

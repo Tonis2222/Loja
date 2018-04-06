@@ -3,15 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{CC4044DE-6A02-45FE-87F9-2570F08C9A8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dominio", "Dominio\Dominio.csproj", "{CC4044DE-6A02-45FE-87F9-2570F08C9A8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteUnitario", "TesteUnitario\TesteUnitario.csproj", "{EE4CC77A-5F84-444B-828C-5B0024D158F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteUnitario", "TesteUnitario\TesteUnitario.csproj", "{EE4CC77A-5F84-444B-828C-5B0024D158F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteIntegracao", "TesteIntegracao\TesteIntegracao.csproj", "{2EC2B43F-65CF-4C2C-A1FB-0F06602EC6A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteIntegracao", "TesteIntegracao\TesteIntegracao.csproj", "{2EC2B43F-65CF-4C2C-A1FB-0F06602EC6A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aplicacao", "Aplicacao\Aplicacao.csproj", "{845DCEFF-D178-48DC-90BF-076ADD28B294}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aplicacao", "Aplicacao\Aplicacao.csproj", "{845DCEFF-D178-48DC-90BF-076ADD28B294}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{1815CF1E-7B00-4358-9EEF-53E41563F120}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{1815CF1E-7B00-4358-9EEF-53E41563F120}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraMongoDB", "InfraMongoDB\InfraMongoDB.csproj", "{E6881AB9-F6CE-475C-80DD-C41BD95AB6DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{BF082063-4F33-45E2-BA20-2FD626BF5DE1}"
+	ProjectSection(SolutionItems) = preProject
+		01-Criação das tabelas.sql = 01-Criação das tabelas.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +46,10 @@ Global
 		{1815CF1E-7B00-4358-9EEF-53E41563F120}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1815CF1E-7B00-4358-9EEF-53E41563F120}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1815CF1E-7B00-4358-9EEF-53E41563F120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6881AB9-F6CE-475C-80DD-C41BD95AB6DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6881AB9-F6CE-475C-80DD-C41BD95AB6DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6881AB9-F6CE-475C-80DD-C41BD95AB6DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6881AB9-F6CE-475C-80DD-C41BD95AB6DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

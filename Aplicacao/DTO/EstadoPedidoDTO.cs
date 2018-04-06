@@ -3,6 +3,6 @@
   public enum EstadoPedidoDTO
   {
     Ativo,
-    Desistido,
+    Cancelado,
   }
 }

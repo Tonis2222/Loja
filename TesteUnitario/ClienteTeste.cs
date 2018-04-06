@@ -13,8 +13,8 @@ namespace TesteUnitario
     [TestMethod]
     public void NaoPodeCadastrarClienteSemNome()
     {
-      bool ResultadoEsperado = false;
-      string MensagemEsperada = "Nome não informado.";
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "Nome não informado.";
 
       Cliente cliente = new Cliente()
       {
@@ -30,15 +30,15 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = cliente.EValidoParaCadastrar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
-      Assert.AreEqual(MensagemEsperada, mensagem);
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
     }
 
     [TestMethod]
     public void NaoPodeCadastrarClienteSemCPF()
     {
-      bool ResultadoEsperado = false;
-      string MensagemEsperada = "CPF não informado.";
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "CPF não informado.";
 
       Cliente cliente = new Cliente()
       {
@@ -54,15 +54,15 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = cliente.EValidoParaCadastrar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
-      Assert.AreEqual(MensagemEsperada, mensagem);
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
     }
 
     [TestMethod]
     public void NaoPodeCadastrarClienteSemEndereco()
     {
-      bool ResultadoEsperado = false;
-      string MensagemEsperada = "Endereço não informado.";
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "Endereço não informado.";
 
       Cliente cliente = new Cliente()
       {
@@ -73,15 +73,15 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = cliente.EValidoParaCadastrar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
-      Assert.AreEqual(MensagemEsperada, mensagem);
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
     }
 
     [TestMethod]
     public void NaoPodeCadastrarClienteSemRua()
     {
-      bool ResultadoEsperado = false;
-      string MensagemEsperada = "Rua não informada.";
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "Rua não informada.";
 
       Cliente cliente = new Cliente()
       {
@@ -97,15 +97,15 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = cliente.EValidoParaCadastrar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
-      Assert.AreEqual(MensagemEsperada, mensagem);
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
     }
 
     [TestMethod]
     public void NaoPodeCadastrarClienteSemNumero()
     {
-      bool ResultadoEsperado = false;
-      string MensagemEsperada = "Número não informado.";
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "Número não informado.";
 
       Cliente cliente = new Cliente()
       {
@@ -121,14 +121,14 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = cliente.EValidoParaCadastrar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
-      Assert.AreEqual(MensagemEsperada, mensagem);
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
     }
 
     [TestMethod]
     public void DeveCadastrarClienteComTodosOsDados()
     {
-      bool ResultadoEsperado = true;
+      bool resultadoEsperado = true;
 
       Cliente cliente = new Cliente()
       {
@@ -145,14 +145,14 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = cliente.EValidoParaCadastrar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
+      Assert.AreEqual(resultadoEsperado, resultado);
 
     }
 
     [TestMethod]
     public void DeveCadastrarClienteSemComplemento()
     {
-      bool ResultadoEsperado = true;
+      bool resultadoEsperado = true;
 
       Cliente cliente = new Cliente()
       {
@@ -168,15 +168,15 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = cliente.EValidoParaCadastrar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
+      Assert.AreEqual(resultadoEsperado, resultado);
 
     }
 
     [TestMethod]
     public void NaoPodeAtualizarClienteSemID()
     {
-      bool ResultadoEsperado = false;
-      string MensagemEsperada = "Id não informado.";
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "Id não informado.";
 
       Cliente cliente = new Cliente()
       {
@@ -192,15 +192,15 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = cliente.EValidoParaAtualizar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
-      Assert.AreEqual(MensagemEsperada, mensagem);
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
     }
 
     [TestMethod]
     public void NaoPodeAtualizarClienteSemNome()
     {
-      bool ResultadoEsperado = false;
-      string MensagemEsperada = "Nome não informado.";
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "Nome não informado.";
 
       Cliente cliente = new Cliente()
       {
@@ -217,15 +217,15 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = cliente.EValidoParaAtualizar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
-      Assert.AreEqual(MensagemEsperada, mensagem);
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
     }
 
     [TestMethod]
     public void NaoPodeAtualizarClienteSemCPF()
     {
-      bool ResultadoEsperado = false;
-      string MensagemEsperada = "CPF não informado.";
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "CPF não informado.";
 
       Cliente cliente = new Cliente()
       {
@@ -242,15 +242,15 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = cliente.EValidoParaAtualizar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
-      Assert.AreEqual(MensagemEsperada, mensagem);
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
     }
 
     [TestMethod]
     public void NaoPodeAtualizarClienteSemEndereco()
     {
-      bool ResultadoEsperado = false;
-      string MensagemEsperada = "Endereço não informado.";
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "Endereço não informado.";
 
       Cliente cliente = new Cliente()
       {
@@ -262,15 +262,15 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = cliente.EValidoParaAtualizar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
-      Assert.AreEqual(MensagemEsperada, mensagem);
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
     }
 
     [TestMethod]
     public void NaoPodeAtualizarClienteSemRua()
     {
-      bool ResultadoEsperado = false;
-      string MensagemEsperada = "Rua não informada.";
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "Rua não informada.";
 
       Cliente cliente = new Cliente()
       {
@@ -287,15 +287,15 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = cliente.EValidoParaAtualizar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
-      Assert.AreEqual(MensagemEsperada, mensagem);
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
     }
 
     [TestMethod]
     public void NaoPodeAtualizarClienteSemNumero()
     {
-      bool ResultadoEsperado = false;
-      string MensagemEsperada = "Número não informado.";
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "Número não informado.";
 
       Cliente cliente = new Cliente()
       {
@@ -312,14 +312,14 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = cliente.EValidoParaAtualizar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
-      Assert.AreEqual(MensagemEsperada, mensagem);
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
     }
 
     [TestMethod]
     public void DeveAtualizarClienteComTodosOsDados()
     {
-      bool ResultadoEsperado = true;
+      bool resultadoEsperado = true;
 
       Cliente cliente = new Cliente()
       {
@@ -337,14 +337,14 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = cliente.EValidoParaAtualizar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
+      Assert.AreEqual(resultadoEsperado, resultado);
 
     }
 
     [TestMethod]
     public void DeveAtualizarClienteSemComplemento()
     {
-      bool ResultadoEsperado = true;
+      bool resultadoEsperado = true;
 
       Cliente cliente = new Cliente()
       {
@@ -361,8 +361,110 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = cliente.EValidoParaAtualizar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
+      Assert.AreEqual(resultadoEsperado, resultado);
 
     }
+
+    [TestMethod]
+    public void NaoPodeCadastrarClienteComNomeMaiorQue200Caracteres()
+    {
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "Nome deve ter no máximo 200 caracteres.";
+
+      Cliente cliente = new Cliente()
+      {
+        Nome = "abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghija",
+        CPF = 12345678910,
+        Endereco = new Endereco()
+        {
+          Rua = "Rua Teste",
+          Numero = 3,
+          Complemento = "101"
+        }
+      };
+
+      string mensagem = string.Empty;
+      var resultado = cliente.EValidoParaCadastrar(out mensagem);
+
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
+    }
+
+    [TestMethod]
+    public void NaoPodeCadastrarClienteComCPFInvalido()
+    {
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "CPF inválido.";
+
+      Cliente cliente = new Cliente()
+      {
+        Nome = "Cliente Teste",
+        CPF = 123456789101,
+        Endereco = new Endereco()
+        {
+          Rua = "Rua Teste",
+          Numero = 3,
+          Complemento = "101"
+        }
+      };
+
+      string mensagem = string.Empty;
+      var resultado = cliente.EValidoParaCadastrar(out mensagem);
+
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
+    }
+
+    [TestMethod]
+    public void NaoPodeCadastrarClienteComRuaMaiorQue200Caracteres()
+    {
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "Rua deve ter no máximo 200 caracteres.";
+
+      Cliente cliente = new Cliente()
+      {
+        CPF = 12345678910,
+        Nome = "Cliente Teste",
+        Endereco = new Endereco()
+        {
+          Rua = "abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghija",
+          Numero = 3,
+          Complemento = "101"
+        }
+      };
+
+      string mensagem = string.Empty;
+      var resultado = cliente.EValidoParaCadastrar(out mensagem);
+
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
+    }
+
+    [TestMethod]
+    public void NaoPodeCadastrarClienteComComplementoMaiorQue200Caracteres()
+    {
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "Complemento deve ter no máximo 200 caracteres.";
+
+      Cliente cliente = new Cliente()
+      {
+        CPF = 12345678910,
+        Nome = "Cliente Teste",
+        Endereco = new Endereco()
+        {
+          Rua = "Rua Teste 1",
+          Numero = 3,
+          Complemento = "abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghija"
+        }
+      };
+
+      string mensagem = string.Empty;
+      var resultado = cliente.EValidoParaCadastrar(out mensagem);
+
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
+    }
+
+
   }
 }

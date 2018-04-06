@@ -3,6 +3,6 @@
   public enum EstadoPedido
   {
     Ativo,
-    Desistido,
+    Cancelado,
   }
 }

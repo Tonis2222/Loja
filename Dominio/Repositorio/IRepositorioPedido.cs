@@ -7,9 +7,9 @@ namespace Dominio.Repositorio
   public interface IRepositorioPedido
   {
     void CriarPedido(Pedido pedido);
-    void DesistirDoPedido(Pedido pedido);
+    void AtualizarPedido(Pedido pedido);
+    Pedido BuscarPedido(Guid id);
     List<Pedido> BuscarPedidos();
     List<Pedido> BuscarPedidosPorCliente(Cliente cliente);
-
   }
 }

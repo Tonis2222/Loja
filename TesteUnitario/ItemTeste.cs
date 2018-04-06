@@ -13,8 +13,8 @@ namespace TesteUnitario
     [TestMethod]
     public void NaoPodeCadastrarItemSemDescricao()
     {
-      bool ResultadoEsperado = false;
-      string MensagemEsperada = "Descrição não informada.";
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "Descrição não informada.";
 
       Item item = new Item()
       {
@@ -24,15 +24,15 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = item.EValidoParaCadastrar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
-      Assert.AreEqual(MensagemEsperada, mensagem);
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
     }
 
     [TestMethod]
     public void NaoPodeCadastrarItemSemValor()
     {
-      bool ResultadoEsperado = false;
-      string MensagemEsperada = "Valor não informado.";
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "Valor não informado.";
 
       Item item = new Item()
       {
@@ -42,14 +42,14 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = item.EValidoParaCadastrar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
-      Assert.AreEqual(MensagemEsperada, mensagem);
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
     }
 
     [TestMethod]
     public void DeveCadastrarComDescricaoEValor()
     {
-      bool ResultadoEsperado = true;
+      bool resultadoEsperado = true;
 
       Item item = new Item()
       {
@@ -60,14 +60,14 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = item.EValidoParaCadastrar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
+      Assert.AreEqual(resultadoEsperado, resultado);
     }
 
     [TestMethod]
     public void NaoPodeAtualizarItemSemDescricao()
     {
-      bool ResultadoEsperado = false;
-      string MensagemEsperada = "Descrição não informada.";
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "Descrição não informada.";
 
       Item item = new Item()
       {
@@ -78,15 +78,15 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = item.EValidoParaAtualizar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
-      Assert.AreEqual(MensagemEsperada, mensagem);
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
     }
 
     [TestMethod]
     public void NaoPodeAtualizarItemSemValor()
     {
-      bool ResultadoEsperado = false;
-      string MensagemEsperada = "Valor não informado.";
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "Valor não informado.";
 
       Item item = new Item()
       {
@@ -97,14 +97,14 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = item.EValidoParaAtualizar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
-      Assert.AreEqual(MensagemEsperada, mensagem);
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
     }
 
     [TestMethod]
     public void DeveAtualizarComDescricaoEValor()
     {
-      bool ResultadoEsperado = true;
+      bool resultadoEsperado = true;
 
       Item item = new Item()
       {
@@ -116,7 +116,26 @@ namespace TesteUnitario
       string mensagem = string.Empty;
       var resultado = item.EValidoParaAtualizar(out mensagem);
 
-      Assert.AreEqual(ResultadoEsperado, resultado);
+      Assert.AreEqual(resultadoEsperado, resultado);
+    }
+
+    [TestMethod]
+    public void NaoPodeCadastrarItemComDescricaoMaiorQue200Caracteres()
+    {
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "Descrição deve ter no máximo 200 caracteres.";
+
+      Item item = new Item()
+      {
+        Descricao = "abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghija",
+        Valor = 1.99M
+      };
+
+      string mensagem = string.Empty;
+      var resultado = item.EValidoParaCadastrar(out mensagem);
+
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
     }
   }
 }

@@ -6,6 +6,8 @@ namespace Dominio
 {
   public class Item
   {
+    private const int TAMANHO_MAXIMO_DESCRICAO = 200;
+
     public int Id { get; set; }
     public string Descricao { get; set; }
     public decimal Valor { get; set; }
@@ -30,7 +32,13 @@ namespace Dominio
         return false;
       }
 
-      if (Valor < 0.01M)
+      if (Descricao.Length > TAMANHO_MAXIMO_DESCRICAO)
+      {
+        mensagemValidacao = $"Descrição deve ter no máximo {TAMANHO_MAXIMO_DESCRICAO} caracteres.";
+        return false;
+      }
+
+      if (Valor <= 0)
       {
         mensagemValidacao = "Valor não informado.";
         return false;
