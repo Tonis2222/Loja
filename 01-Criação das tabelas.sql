@@ -26,3 +26,5 @@ begin
     valor decimal(24,8) not null,
     )
 end
+
+

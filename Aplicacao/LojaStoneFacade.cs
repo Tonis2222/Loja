@@ -1,5 +1,6 @@
 ﻿using Aplicacao.DTO;
 using Aplicacao.Retorno;
+using Aplicacao.ServicosDeAplicacao;
 using AutoMapper;
 using Dominio;
 using Dominio.Repositorio;
@@ -14,13 +15,14 @@ namespace Aplicacao
     private IRepositorioCliente repositorioCliente;
     private IRepositorioItem repositorioItem;
     private IRepositorioPedido repositorioPedido;
+    private IServicoMensageria servicoMensageria;
 
-    public LojaStoneFacade(IRepositorioCliente repositorioCliente, IRepositorioItem repositorioItem, IRepositorioPedido repositorioPedido)
+    public LojaStoneFacade(IRepositorioCliente repositorioCliente, IRepositorioItem repositorioItem, IRepositorioPedido repositorioPedido, IServicoMensageria servicoMensageria)
     {
       this.repositorioCliente = repositorioCliente;
       this.repositorioItem = repositorioItem;
       this.repositorioPedido = repositorioPedido;
-
+      this.servicoMensageria = servicoMensageria;
     }
 
     public RetornoCadastrarCliente CadastrarCliente(ClienteDTO clienteDTO)
@@ -123,23 +125,25 @@ namespace Aplicacao
       return listaRetorno;
     }
 
-    //public RetornoCriarPedido CriarPedido(ClienteDTO clienteDTO, List<ItemDTO> ItensDTO)
-    //{
-    //  if (clienteDTO == null)
-    //    throw new ArgumentNullException("clienteDTO");
+    public RetornoCriarPedido CriarPedido(ClienteDTO clienteDTO, List<ItemDTO> ItensDTO)
+    {
+      if (clienteDTO == null)
+        throw new ArgumentNullException("clienteDTO");
 
-    //  if (ItensDTO == null || !ItensDTO.Any())
-    //    throw new ArgumentNullException("ItensDTO");
+      if (ItensDTO == null || !ItensDTO.Any())
+        throw new ArgumentNullException("ItensDTO");
 
-    //  var cliente = Mapper.Map<Cliente>(clienteDTO);
-    //  var itens = ItensDTO.Select(itemDTO => Mapper.Map<Item>(itemDTO)).ToList();
+      var cliente = Mapper.Map<Cliente>(clienteDTO);
+      var itens = ItensDTO.Select(itemDTO => Mapper.Map<Item>(itemDTO)).ToList();
 
-    //  var pedido = FabricaPedido.CriarPedido(cliente, itens);
+      var pedido = FabricaPedido.CriarPedido(cliente, itens);
 
-    //  _repositorioPedido.CriarPedido(pedido);
+      servicoMensageria.GuardarCopia(pedido);
 
-    //  return new RetornoCriarPedido() { Sucesso = true, Id = pedido.Id };
-    //}
+      repositorioPedido.CriarPedido(pedido);
+
+      return new RetornoCriarPedido() { Sucesso = true, Id = pedido.Id };
+    }
 
     //public RetornoAtualizarPedido DesistirDoPedido(PedidoDTO pedidoDTO)
     //{

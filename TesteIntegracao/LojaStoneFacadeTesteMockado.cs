@@ -6,6 +6,7 @@ using Aplicacao;
 using Dominio;
 using Aplicacao.DTO;
 using AutoMapper;
+using Aplicacao.ServicosDeAplicacao;
 
 namespace TesteIntegracao
 {
@@ -15,6 +16,7 @@ namespace TesteIntegracao
     private Mock<IRepositorioCliente> mockRepositorioCliente;
     private Mock<IRepositorioItem> mockRepositorioItem;
     private Mock<IRepositorioPedido> mockRepositorioPedido;
+    private Mock<IServicoMensageria> mockServicoMensageria;
 
     [TestInitialize]
     public void Inicializar()
@@ -24,12 +26,13 @@ namespace TesteIntegracao
       mockRepositorioCliente = new Mock<IRepositorioCliente>();
       mockRepositorioItem = new Mock<IRepositorioItem>();
       mockRepositorioPedido = new Mock<IRepositorioPedido>();
+      mockServicoMensageria = new Mock<IServicoMensageria>();
     }
     
     [TestMethod]
     public void CadastrarCliente()
     {
-      var facade = new LojaStoneFacade(mockRepositorioCliente.Object, mockRepositorioItem.Object, mockRepositorioPedido.Object);
+      var facade = new LojaStoneFacade(mockRepositorioCliente.Object, mockRepositorioItem.Object, mockRepositorioPedido.Object, mockServicoMensageria.Object);
 
       var clienteDTO = new ClienteDTO()
       {
@@ -51,7 +54,7 @@ namespace TesteIntegracao
     [TestMethod]
     public void AtualizarCliente()
     {
-      var facade = new LojaStoneFacade(mockRepositorioCliente.Object, mockRepositorioItem.Object, mockRepositorioPedido.Object);
+      var facade = new LojaStoneFacade(mockRepositorioCliente.Object, mockRepositorioItem.Object, mockRepositorioPedido.Object, mockServicoMensageria.Object);
 
       var clienteDTO = new ClienteDTO()
       {

@@ -6,8 +6,8 @@ namespace Dominio.Repositorio
 {
   public interface IRepositorioItem
   {
-    void CadastrarItem(Item cliente);
-    void AtualizarItem(Item cliente);
+    void CadastrarItem(Item item);
+    void AtualizarItem(Item item);
     List<Item> BuscarItens();
   }
 }

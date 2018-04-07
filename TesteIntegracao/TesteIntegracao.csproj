@@ -18,6 +18,8 @@
     <ProjectReference Include="..\Aplicacao\Aplicacao.csproj" />
     <ProjectReference Include="..\Dominio\Dominio.csproj" />
     <ProjectReference Include="..\InfraMongoDB\InfraMongoDB.csproj" />
+    <ProjectReference Include="..\InfraSQLServer\InfraSQLServer.csproj" />
+    <ProjectReference Include="..\ServicoMensageriaRabbitMQ\ServicoMensageriaRabbitMQ.csproj" />
   </ItemGroup>
 
 </Project>
