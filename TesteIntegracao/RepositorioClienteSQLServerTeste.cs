@@ -28,7 +28,9 @@ namespace TesteIntegracao
           Complemento = "101"
         }
       };
-      repositorio.CadastrarCliente(cliente);
+      var ret = repositorio.CadastrarClienteAsync(cliente);
+      ret.Wait();
+
       Assert.IsTrue(cliente.Id > 0);
     }
 
@@ -47,12 +49,14 @@ namespace TesteIntegracao
           Complemento = "101"
         }
       };
-      repositorio.CadastrarCliente(cliente);
+      var ret = repositorio.CadastrarClienteAsync(cliente);
+      ret.Wait();
       Assert.IsTrue(cliente.Id > 0);
 
-      var ret = repositorio.BuscarClientes();
+      var ret1 = repositorio.BuscarClientesAsync();
+      ret1.Wait();
       Assert.IsNotNull(repositorio);
-      Assert.IsTrue(ret.Any(a => a.Id == cliente.Id));
+      Assert.IsTrue(ret1.Result.Any(a => a.Id == cliente.Id));
     }
 
     [TestMethod]
@@ -71,22 +75,27 @@ namespace TesteIntegracao
           Complemento = "101"
         }
       };
-      repositorio.CadastrarCliente(cliente);
+      var ret = repositorio.CadastrarClienteAsync(cliente);
+      ret.Wait();
       Assert.IsTrue(cliente.Id > 0);
 
-      var ret = repositorio.BuscarClientes();
-      Assert.IsNotNull(repositorio);
-      Assert.IsTrue(ret.Any(a => a.Id == cliente.Id));
+      var ret1 = repositorio.BuscarClientesAsync();
+      ret1.Wait();
 
-      var clienteSalvo = ret.First(a => a.Id == cliente.Id);
+      Assert.IsNotNull(repositorio);
+      Assert.IsTrue(ret1.Result.Any(a => a.Id == cliente.Id));
+
+      var clienteSalvo = ret1.Result.First(a => a.Id == cliente.Id);
       clienteSalvo.Nome = nomeEsperado;
 
-      repositorio.AtualizarCliente(clienteSalvo);
+      var ret2 = repositorio.AtualizarClienteAsync(clienteSalvo);
+      ret2.Wait();
 
-      ret = repositorio.BuscarClientes();
+      var ret3 = repositorio.BuscarClientesAsync();
+      ret3.Wait();
       Assert.IsNotNull(repositorio);
-      Assert.IsTrue(ret.Any(a => a.Id == cliente.Id));
-      Assert.AreEqual(nomeEsperado, ret.First(a => a.Id == cliente.Id).Nome);
+      Assert.IsTrue(ret3.Result.Any(a => a.Id == cliente.Id));
+      Assert.AreEqual(nomeEsperado, ret3.Result.First(a => a.Id == cliente.Id).Nome);
     }
 
   }

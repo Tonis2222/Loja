@@ -16,7 +16,6 @@ namespace ServicoMensageriaRabbitMQ
 
     public void GuardarCopia(Pedido pedido)
     {
-
       var pedidoSerializado = Newtonsoft.Json.JsonConvert.SerializeObject(pedido);
 
       using (var connection = fabricaConexoes.CreateConnection())

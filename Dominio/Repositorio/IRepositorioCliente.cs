@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Dominio.Repositorio
 {
   public interface IRepositorioCliente
   {
-    void CadastrarCliente(Cliente cliente);
-    void AtualizarCliente(Cliente cliente);
-    List<Cliente> BuscarClientes();
+    Task CadastrarClienteAsync(Cliente cliente);
+    Task AtualizarClienteAsync(Cliente cliente);
+    Task<List<Cliente>> BuscarClientesAsync();
+    Task<Cliente> BuscarClienteAsync(int id);
   }
 }

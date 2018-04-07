@@ -3,7 +3,7 @@ begin
   create table Cliente (
     id int not null primary key identity(1,1),
     nome varchar(200) not null,
-    cpf decimal(11,0) not null unique,
+    cpf decimal(11,0) not null,
     )
 end
 
@@ -26,5 +26,3 @@ begin
     valor decimal(24,8) not null,
     )
 end
-
-
