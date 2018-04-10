@@ -13,20 +13,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aplicacao", "Aplicacao\Apli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{1815CF1E-7B00-4358-9EEF-53E41563F120}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraMongoDB", "InfraMongoDB\InfraMongoDB.csproj", "{E6881AB9-F6CE-475C-80DD-C41BD95AB6DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfraMongoDB", "InfraMongoDB\InfraMongoDB.csproj", "{E6881AB9-F6CE-475C-80DD-C41BD95AB6DF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{BF082063-4F33-45E2-BA20-2FD626BF5DE1}"
 	ProjectSection(SolutionItems) = preProject
 		01-Criação das tabelas.sql = 01-Criação das tabelas.sql
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicoMensageriaRabbitMQ", "ServicoMensageriaRabbitMQ\ServicoMensageriaRabbitMQ.csproj", "{AB52F96E-92D8-449A-BDE3-44192113398A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServicoMensageriaRabbitMQ", "ServicoMensageriaRabbitMQ\ServicoMensageriaRabbitMQ.csproj", "{AB52F96E-92D8-449A-BDE3-44192113398A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Teste", "Teste", "{39D206BF-2B58-4022-B231-E07102D63C74}"
+	ProjectSection(SolutionItems) = preProject
+		API_Loja_Stone.postman_collection = API_Loja_Stone.postman_collection
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{A6DDE634-619B-4087-900C-A28ACF89C1B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraSQLServer", "InfraSQLServer\InfraSQLServer.csproj", "{B0302EFF-A4CA-4D98-95B0-78CA8467090A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfraSQLServer", "InfraSQLServer\InfraSQLServer.csproj", "{B0302EFF-A4CA-4D98-95B0-78CA8467090A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

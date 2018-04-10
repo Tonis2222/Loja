@@ -3,6 +3,7 @@ using Dominio.Repositorio;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace InfraSQLServer
 {
@@ -19,6 +20,8 @@ update Item set descricao = @descricao, valor = @valor where id = @id";
     private const string queryBuscaItens = @"
 select id, descricao, valor from Item";
 
+    private const string queryBuscaItemPoId = queryBuscaItens + @" where id = @id";
+
     private string connectionString;
     public RepositorioItemSQLServer(string connectionString)
     {
@@ -26,11 +29,11 @@ select id, descricao, valor from Item";
 
     }
 
-    public void CadastrarItem(Item item)
+    public async Task CadastrarItemAsync(Item item)
     {
       using (SqlConnection connection = new SqlConnection(connectionString))
       {
-        connection.Open();
+        await connection.OpenAsync();
 
         using (SqlCommand command = new SqlCommand(queryInsertItem, connection))
         {
@@ -38,41 +41,41 @@ select id, descricao, valor from Item";
           command.Parameters.Add(new SqlParameter("@valor", item.Valor));
           var paramId = new SqlParameter("@id", System.Data.SqlDbType.Int) { Direction = System.Data.ParameterDirection.Output };
           command.Parameters.Add(paramId);
-          command.ExecuteNonQuery();
+          await command.ExecuteNonQueryAsync();
           item.Id = Convert.ToInt32(paramId.Value);
         }
       }
     }
 
-    public void AtualizarItem(Item item)
+    public async Task AtualizarItemAsync(Item item)
     {
       using (SqlConnection connection = new SqlConnection(connectionString))
       {
-        connection.Open();
+        await connection.OpenAsync();
 
         using (SqlCommand command = new SqlCommand(queryUpdatetItem, connection))
         {
           command.Parameters.Add(new SqlParameter("@descricao", item.Descricao));
-          command.Parameters.Add(new SqlParameter("@valor", item.Valor));          
+          command.Parameters.Add(new SqlParameter("@valor", item.Valor));
           command.Parameters.Add(new SqlParameter("@id", item.Id));
-          var numeroLinhasAfetadas = command.ExecuteNonQuery();
+          var numeroLinhasAfetadas = await command.ExecuteNonQueryAsync();
         }
       }
     }
 
-    public List<Item> BuscarItens()
+    public async Task<List<Item>> BuscarItensAsync()
     {
       List<Item> listaRetorno = new List<Item>();
 
       using (SqlConnection connection = new SqlConnection(connectionString))
       {
-        connection.Open();
+        await connection.OpenAsync();
 
         using (SqlCommand command = new SqlCommand(queryBuscaItens, connection))
         {
-          var rd = command.ExecuteReader();
+          var rd = await command.ExecuteReaderAsync();
 
-          while (rd.Read())
+          while (await rd.ReadAsync())
           {
             listaRetorno.Add(new Item()
             {
@@ -86,5 +89,33 @@ select id, descricao, valor from Item";
       return listaRetorno;
     }
 
+    public async Task<Item> BuscarItemAsync(int id)
+    {
+      using (SqlConnection connection = new SqlConnection(connectionString))
+      {
+        await connection.OpenAsync();
+
+        using (SqlCommand command = new SqlCommand(queryBuscaItemPoId, connection))
+        {
+          command.Parameters.Add(new SqlParameter("@id", id));
+
+          var rd = await command.ExecuteReaderAsync();
+
+          if (await rd.ReadAsync())
+          {
+            return new Item()
+            {
+              Id = Convert.ToInt32(rd["id"]),
+              Descricao = Convert.ToString(rd["descricao"]),
+              Valor = Convert.ToDecimal(rd["valor"])
+            };
+          }
+          else
+          {
+            return null;
+          }
+        }
+      }
+    }
   }
 }

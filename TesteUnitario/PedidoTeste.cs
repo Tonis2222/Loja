@@ -44,7 +44,7 @@ namespace TesteUnitario
       pedido.Estado = EstadoPedido.Cancelado;
 
       string mensagem;
-      var resultado = pedido.EValidoCriar(out mensagem);
+      var resultado = pedido.EValidoParaCriar(out mensagem);
 
       Assert.AreEqual(resultadoEsperado, resultado);
       Assert.AreEqual(mensagemEsperada, mensagem);
@@ -60,7 +60,7 @@ namespace TesteUnitario
       pedido.Id = Guid.Empty;
 
       string mensagem;
-      var resultado = pedido.EValidoCriar(out mensagem);
+      var resultado = pedido.EValidoParaCriar(out mensagem);
 
       Assert.AreEqual(resultadoEsperado, resultado);
       Assert.AreEqual(mensagemEsperada, mensagem);
@@ -76,7 +76,7 @@ namespace TesteUnitario
       pedido.Cliente = null;
 
       string mensagem;
-      var resultado = pedido.EValidoCriar(out mensagem);
+      var resultado = pedido.EValidoParaCriar(out mensagem);
 
       Assert.AreEqual(resultadoEsperado, resultado);
       Assert.AreEqual(mensagemEsperada, mensagem);
@@ -92,7 +92,7 @@ namespace TesteUnitario
       pedido.Itens = new List<Item>();
 
       string mensagem;
-      var resultado = pedido.EValidoCriar(out mensagem);
+      var resultado = pedido.EValidoParaCriar(out mensagem);
 
       Assert.AreEqual(resultadoEsperado, resultado);
       Assert.AreEqual(mensagemEsperada, mensagem);

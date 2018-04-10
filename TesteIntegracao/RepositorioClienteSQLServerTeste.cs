@@ -60,6 +60,31 @@ namespace TesteIntegracao
     }
 
     [TestMethod]
+    public void BuscarclientePorId()
+    {
+      var repositorio = new RepositorioClienteSQLServer(connectionString);
+      Cliente cliente = new Cliente()
+      {
+        CPF = new Random().Next(0, int.MaxValue),
+        Nome = "Cliente Teste",
+        Endereco = new Endereco()
+        {
+          Rua = "Rua Teste",
+          Numero = 3,
+          Complemento = "101"
+        }
+      };
+      var ret = repositorio.CadastrarClienteAsync(cliente);
+      ret.Wait();
+      Assert.IsTrue(cliente.Id > 0);
+
+      var ret1 = repositorio.BuscarClienteAsync(cliente.Id);
+      ret1.Wait();
+      Assert.IsNotNull(ret1.Result);
+      Assert.IsTrue(ret1.Result.Id == cliente.Id);
+    }
+
+    [TestMethod]
     public void Atualizarcliente()
     {
       var nomeEsperado = "Cliente Teste Atualizado";

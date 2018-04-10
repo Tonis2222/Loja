@@ -1,0 +1,726 @@
+{
+	"info": {
+		"name": "Loja Stone",
+		"_postman_id": "9393ae23-5e3c-78c3-f9ea-a790362abbca",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Buscar todos os Clientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:54602/api/cliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54602",
+							"path": [
+								"api",
+								"cliente"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "430e9078-711c-48c1-817b-0aa2b3649cbf",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:54602/api/cliente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "54602",
+									"path": [
+										"api",
+										"cliente"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"_postman_previewtype": "parsed",
+							"header": [],
+							"cookie": [],
+							"responseTime": 0,
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Buscar Cliente por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:54602/api/cliente/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54602",
+							"path": [
+								"api",
+								"cliente",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "b81442b7-a7cc-47f8-a46e-3a9be78cb9f1",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:54602/api/cliente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "54602",
+									"path": [
+										"api",
+										"cliente"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"_postman_previewtype": "parsed",
+							"header": [],
+							"cookie": [],
+							"responseTime": 0,
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Inserir Cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n  \"Nome\": \"Teste 1\",\r\n  \"CPF\": \"12345678910\",\r\n  \"Endereco\": {\r\n    \"Rua\": \"Rua Teste\",\r\n    \"Numero\": \"3\",\r\n    \"Complemento\": \"101\"\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:54602/api/cliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54602",
+							"path": [
+								"api",
+								"cliente"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "1a16ea4a-adaa-4520-8ec9-1841704e4cf2",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:54602/api/cliente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "54602",
+									"path": [
+										"api",
+										"cliente"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"_postman_previewtype": "parsed",
+							"header": [],
+							"cookie": [],
+							"responseTime": 0,
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Atualizar Cliente",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n  \"Id\":\"2\",\r\n  \"Nome\": \"Teste 1\",\r\n  \"CPF\": \"12345678910\",\r\n  \"Endereco\": {\r\n    \"Rua\": \"Rua Teste\",\r\n    \"Numero\": \"3\",\r\n    \"Complemento\": \"101\"\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:54602/api/cliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54602",
+							"path": [
+								"api",
+								"cliente"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "cc23a3e5-3044-4972-a114-a7a1453168cb",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:54602/api/cliente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "54602",
+									"path": [
+										"api",
+										"cliente"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"_postman_previewtype": "parsed",
+							"header": [],
+							"cookie": [],
+							"responseTime": 0,
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Item",
+			"item": [
+				{
+					"name": "Buscar todos os Itens",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:54602/api/Item",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54602",
+							"path": [
+								"api",
+								"Item"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "8b63439c-26b6-4bb5-9c95-3827f131a941",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:54602/api/cliente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "54602",
+									"path": [
+										"api",
+										"cliente"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"_postman_previewtype": "parsed",
+							"header": [],
+							"cookie": [],
+							"responseTime": 0,
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Buscar Item por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:54602/api/item/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54602",
+							"path": [
+								"api",
+								"item",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "25d8fd31-2dec-44b9-9f84-4c496decef13",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:54602/api/cliente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "54602",
+									"path": [
+										"api",
+										"cliente"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"_postman_previewtype": "parsed",
+							"header": [],
+							"cookie": [],
+							"responseTime": 0,
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Inserir Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n  \"Descricao\": \"Item Teste 2\",\r\n  \"Valor\": \"13.99\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:54602/api/item",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54602",
+							"path": [
+								"api",
+								"item"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "07b0d533-b776-4ca3-b4a0-d457743e5afb",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:54602/api/cliente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "54602",
+									"path": [
+										"api",
+										"cliente"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"_postman_previewtype": "parsed",
+							"header": [],
+							"cookie": [],
+							"responseTime": 0,
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Atualizar Item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n  \"Id\":\"3\",\r\n  \"Descricao\": \"Item Teste 2\",\r\n  \"Valor\": \"13.99\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:54602/api/item",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54602",
+							"path": [
+								"api",
+								"item"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "53df28cc-c437-4ca7-b5fc-2f75b7481512",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:54602/api/cliente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "54602",
+									"path": [
+										"api",
+										"cliente"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"_postman_previewtype": "parsed",
+							"header": [],
+							"cookie": [],
+							"responseTime": 0,
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Pedido",
+			"item": [
+				{
+					"name": "Buscar todos os Pedidos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:54602/api/Pedido",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54602",
+							"path": [
+								"api",
+								"Pedido"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "9f57f4e3-bef3-4b8b-a4d6-0277732d3578",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:54602/api/cliente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "54602",
+									"path": [
+										"api",
+										"cliente"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"_postman_previewtype": "parsed",
+							"header": [],
+							"cookie": [],
+							"responseTime": 0,
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Criar Pedido",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Cliente\": {\n        \"id\": 3,\n        \"nome\": \"Teste 221\",\n        \"cpf\": 12345678911,\n        \"endereco\": {\n            \"rua\": \"Rua Teste\",\n            \"numero\": 13,\n            \"complemento\": \"101\"\n        }\n    },\n    \"Itens\": [\n        {\n            \"id\": 1,\n            \"descricao\": \"Item Teste 1\",\n            \"valor\": 23.99\n        },\n        {\n            \"id\": 2,\n            \"descricao\": \"Item Teste 2\",\n            \"valor\": 13.99\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:54602/api/Pedido",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54602",
+							"path": [
+								"api",
+								"Pedido"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "88256311-c740-4366-9aa1-6e126fe5fdbd",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:54602/api/cliente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "54602",
+									"path": [
+										"api",
+										"cliente"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"_postman_previewtype": "parsed",
+							"header": [],
+							"cookie": [],
+							"responseTime": 0,
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Buscar Pedido por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:54602/api/Pedido/d7779fbc-b467-4726-a226-a091d29f54a0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54602",
+							"path": [
+								"api",
+								"Pedido",
+								"d7779fbc-b467-4726-a226-a091d29f54a0"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "96ddbb18-7372-4dea-bf72-0716eb3b9403",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:54602/api/cliente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "54602",
+									"path": [
+										"api",
+										"cliente"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"_postman_previewtype": "parsed",
+							"header": [],
+							"cookie": [],
+							"responseTime": 0,
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Cancelar Pedido por Id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:54602/api/Pedido/Cancelar/d7779fbc-b467-4726-a226-a091d29f54a0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54602",
+							"path": [
+								"api",
+								"Pedido",
+								"Cancelar",
+								"d7779fbc-b467-4726-a226-a091d29f54a0"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "0248a050-3d87-4f9b-a455-20928a49cd22",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:54602/api/cliente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "54602",
+									"path": [
+										"api",
+										"cliente"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"_postman_previewtype": "parsed",
+							"header": [],
+							"cookie": [],
+							"responseTime": 0,
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	]
+}

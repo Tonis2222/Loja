@@ -50,7 +50,8 @@ namespace TesteIntegracao
 
       var repositorio = new RepositorioPedidoMongoDB(connectionString);
 
-      repositorio.CriarPedido(pedido);
+      var retorno = repositorio.CriarPedidoAsync(pedido);
+      retorno.Wait();
     }
 
     [TestMethod]
@@ -86,9 +87,12 @@ namespace TesteIntegracao
 
       var repositorio = new RepositorioPedidoMongoDB(connectionString);
 
-      repositorio.CriarPedido(pedido);
+      var retorno = repositorio.CriarPedidoAsync(pedido);
+      retorno.Wait();
 
-      var pedidoSalvo = repositorio.BuscarPedido(pedido.Id);
+      var retorno2 = repositorio.BuscarPedidoAsync(pedido.Id);
+      retorno2.Wait();
+      var pedidoSalvo = retorno2.Result;
 
       Assert.IsNotNull(pedidoSalvo);
       Assert.AreEqual(pedidoSalvo.Id, pedido.Id);
@@ -136,9 +140,13 @@ namespace TesteIntegracao
 
       var repositorio = new RepositorioPedidoMongoDB(connectionString);
 
-      repositorio.CriarPedido(pedido);
+      var retorno = repositorio.CriarPedidoAsync(pedido);
+      retorno.Wait();
+      
+      var retorno2 = repositorio.BuscarPedidoAsync(pedido.Id);
+      retorno2.Wait();
 
-      var pedidoSalvo = repositorio.BuscarPedido(pedido.Id);
+      var pedidoSalvo = retorno2.Result;
 
       Assert.IsNotNull(pedidoSalvo);
       Assert.AreEqual(pedidoSalvo.Id, pedido.Id);
@@ -156,9 +164,12 @@ namespace TesteIntegracao
       Assert.IsTrue(resultadoCancelamento);
       Assert.IsTrue(string.IsNullOrEmpty(mensagem));
 
-      repositorio.AtualizarPedido(pedidoSalvo);
+      var retorno3 = repositorio.AtualizarPedidoAsync(pedidoSalvo);
+      retorno3.Wait();
 
-      pedidoSalvo = repositorio.BuscarPedido(pedido.Id);
+      var retorno4 = repositorio.BuscarPedidoAsync(pedido.Id);
+      retorno4.Wait();
+      pedidoSalvo = retorno4.Result;
 
       Assert.IsNotNull(pedidoSalvo);
       Assert.AreEqual(pedidoSalvo.Id, pedido.Id);
@@ -207,15 +218,18 @@ namespace TesteIntegracao
         pedidosEsperados.Add(pedido);
       }
 
-
       var repositorio = new RepositorioPedidoMongoDB(connectionString);
 
       pedidosEsperados.ForEach(pedido =>
       {
-        repositorio.CriarPedido(pedido);
+        var retorno = repositorio.CriarPedidoAsync(pedido);
+        retorno.Wait();
       });
 
-      var pedidosSalvos = repositorio.BuscarPedidosPorCliente(cliente);
+      var retorno2 = repositorio.BuscarPedidosPorClienteAsync(cliente);
+      retorno2.Wait();
+
+      var pedidosSalvos = retorno2.Result;
 
       pedidosEsperados.ForEach(pedido =>
       {

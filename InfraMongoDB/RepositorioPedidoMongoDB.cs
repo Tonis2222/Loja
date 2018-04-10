@@ -3,6 +3,7 @@ using Dominio.Repositorio;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace InfraMongoDB
 {
@@ -29,29 +30,32 @@ namespace InfraMongoDB
       }
     }
 
-    public Pedido BuscarPedido(Guid id)
+    public async Task<Pedido> BuscarPedidoAsync(Guid id)
     {
-      return pedidos.Find(Builders<Pedido>.Filter.Eq(a => a.Id, id)).FirstOrDefault();
+      var retorno = await pedidos.FindAsync(Builders<Pedido>.Filter.Eq(a => a.Id, id));
+      return retorno.FirstOrDefault();
     }
 
-    public List<Pedido> BuscarPedidos()
+    public async Task<List<Pedido>> BuscarPedidosAsync()
     {
-      return pedidos.Find(Builders<Pedido>.Filter.Empty).ToList();
+      var retorno = await pedidos.FindAsync(Builders<Pedido>.Filter.Empty);
+      return retorno.ToList();
     }
 
-    public List<Pedido> BuscarPedidosPorCliente(Cliente cliente)
+    public async Task<List<Pedido>> BuscarPedidosPorClienteAsync(Cliente cliente)
     {
-      return pedidos.Find(Builders<Pedido>.Filter.Eq(a => a.Cliente.Id, cliente.Id)).ToList();
+      var retorno = await pedidos.FindAsync(Builders<Pedido>.Filter.Eq(a => a.Cliente.Id, cliente.Id));
+      return retorno.ToList();
     }
 
-    public void CriarPedido(Pedido pedido)
+    public async Task CriarPedidoAsync(Pedido pedido)
     {
-      pedidos.InsertOne(pedido);
+      await pedidos.InsertOneAsync(pedido);
     }
 
-    public void AtualizarPedido(Pedido pedido)
+    public async Task AtualizarPedidoAsync(Pedido pedido)
     {
-      pedidos.ReplaceOne(Builders<Pedido>.Filter.Eq(a => a.Id, pedido.Id), pedido);
+      await pedidos.ReplaceOneAsync(Builders<Pedido>.Filter.Eq(a => a.Id, pedido.Id), pedido);
     }
   }
 }

@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Aplicacao;
+using Aplicacao.ServicosDeAplicacao;
 using Dominio.Repositorio;
+using InfraMongoDB;
 using InfraSQLServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using ServicoMensageriaRabbitMQ;
 
 namespace API
 {
@@ -18,6 +22,7 @@ namespace API
     public Startup(IConfiguration configuration)
     {
       Configuration = configuration;
+      MapperInit.MapearDTOs();
     }
 
     public IConfiguration Configuration { get; }
@@ -28,6 +33,13 @@ namespace API
       services.AddMvc();
       services.AddTransient<IRepositorioCliente, RepositorioClienteSQLServer>(
         a => new RepositorioClienteSQLServer(Configuration.GetConnectionString("DefaultConnection")));
+      services.AddTransient<IRepositorioItem, RepositorioItemSQLServer>(
+        a => new RepositorioItemSQLServer(Configuration.GetConnectionString("DefaultConnection")));
+      services.AddTransient<IRepositorioPedido, RepositorioPedidoMongoDB>(
+        a => new RepositorioPedidoMongoDB(Configuration.GetConnectionString("MongoDB")));
+      services.AddTransient<IServicoMensageria, MensageriaRabbitMQ>(
+        a => new MensageriaRabbitMQ(Configuration.GetValue< string>("HostNameRabbitMQ")));
+      services.AddTransient<LojaStoneFacade, LojaStoneFacade>();
 
     }
 

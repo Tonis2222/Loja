@@ -46,7 +46,7 @@ namespace TesteUnitario
       Assert.AreEqual(clienteEsperado, pedido.Cliente, "Cliente não cadastrado no Pedido");
       Assert.AreEqual(itensEsperados, pedido.Itens, "Itens não cadastrados no Pedido");
       string mensagem;
-      Assert.IsTrue(pedido.EValidoCriar(out mensagem));
+      Assert.IsTrue(pedido.EValidoParaCriar(out mensagem));
 
     }
   }

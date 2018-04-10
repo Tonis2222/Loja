@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Dominio.Repositorio
 {
   public interface IRepositorioItem
   {
-    void CadastrarItem(Item item);
-    void AtualizarItem(Item item);
-    List<Item> BuscarItens();
+    Task CadastrarItemAsync(Item item);
+    Task AtualizarItemAsync(Item item);
+    Task<List<Item>> BuscarItensAsync();
+    Task<Item> BuscarItemAsync(int id);
   }
 }

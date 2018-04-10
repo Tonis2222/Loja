@@ -12,7 +12,7 @@ namespace Dominio
     public List<Item> Itens { get; set; }
     public EstadoPedido Estado { get; set; }
     
-    public bool EValidoCriar(out string mensagem)
+    public bool EValidoParaCriar(out string mensagem)
     {
       if (Id == null || Id == Guid.Empty)
       {

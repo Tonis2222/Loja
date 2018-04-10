@@ -23,7 +23,10 @@ namespace TesteIntegracao
         Descricao = "Item de Teste 1",
         Valor = 1.99M
       };
-      repositorio.CadastrarItem(item);
+
+      var retorno = repositorio.CadastrarItemAsync(item);
+      retorno.Wait();
+
       Assert.IsTrue(item.Id > 0);
     }
 
@@ -36,12 +39,39 @@ namespace TesteIntegracao
         Descricao = "Item de Teste 1",
         Valor = 1.99M
       };
-      repositorio.CadastrarItem(item);
-      Assert.IsTrue(item.Id > 0);
 
-      var ret = repositorio.BuscarItens();
-      Assert.IsNotNull(repositorio);
-      Assert.IsTrue(ret.Any(a => a.Id == item.Id));
+      var retorno = repositorio.CadastrarItemAsync(item);
+      retorno.Wait();
+
+      Assert.IsTrue(item.Id > 0);
+      var retorno2 = repositorio.BuscarItensAsync();
+      retorno2.Wait();
+
+      var itens = retorno2.Result;
+      Assert.IsNotNull(itens);
+      Assert.IsTrue(itens.Any(a => a.Id == item.Id));
+    }
+
+    [TestMethod]
+    public void BuscarITemPorId()
+    {
+      var repositorio = new RepositorioItemSQLServer(connectionString);
+      var item = new Item()
+      {
+        Descricao = "Item de Teste 1",
+        Valor = 1.99M
+      };
+
+      var retorno = repositorio.CadastrarItemAsync(item);
+      retorno.Wait();
+
+      Assert.IsTrue(item.Id > 0);
+      var retorno2 = repositorio.BuscarItemAsync(item.Id);
+      retorno2.Wait();
+
+      var itemBusca = retorno2.Result;
+      Assert.IsNotNull(itemBusca);
+      Assert.IsTrue(itemBusca.Id == item.Id);
     }
 
     [TestMethod]
@@ -54,22 +84,31 @@ namespace TesteIntegracao
         Descricao = "Item de Teste 1",
         Valor = 1.99M
       };
-      repositorio.CadastrarItem(item);
+
+      var retorno = repositorio.CadastrarItemAsync(item);
+      retorno.Wait();
       Assert.IsTrue(item.Id > 0);
 
-      var ret = repositorio.BuscarItens();
-      Assert.IsNotNull(repositorio);
-      Assert.IsTrue(ret.Any(a => a.Id == item.Id));
+      var retorno2 = repositorio.BuscarItensAsync();
+      retorno2.Wait();
 
-      var itemSalvo = ret.First(a => a.Id == item.Id);
+      var itens = retorno2.Result;
+      Assert.IsNotNull(itens);
+      Assert.IsTrue(itens.Any(a => a.Id == item.Id));
+
+      var itemSalvo = itens.First(a => a.Id == item.Id);
       itemSalvo.Valor = valorEsperado;
 
-      repositorio.AtualizarItem(itemSalvo);
+      var retorno3 = repositorio.AtualizarItemAsync(itemSalvo);
+      retorno3.Wait();
 
-      ret = repositorio.BuscarItens();
-      Assert.IsNotNull(repositorio);
-      Assert.IsTrue(ret.Any(a => a.Id == item.Id));
-      Assert.AreEqual(valorEsperado, ret.First(a => a.Id == item.Id).Valor);
+      var retorno4 = repositorio.BuscarItensAsync();
+      retorno4.Wait();
+
+      itens = retorno4.Result;
+      Assert.IsNotNull(itens);
+      Assert.IsTrue(itens.Any(a => a.Id == item.Id));
+      Assert.AreEqual(valorEsperado, itens.First(a => a.Id == item.Id).Valor);
     }
   }
 }
