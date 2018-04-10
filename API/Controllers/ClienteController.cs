@@ -18,20 +18,32 @@ namespace API.Controllers
     }
 
     [HttpGet]
-    public async Task<IEnumerable<ClienteDTO>> ListarClientes()
+    public async Task<IActionResult> ListarClientes()
     {
-      return await facade.BuscarClientesAsync();
+      var ret = await facade.BuscarClientesAsync();
+
+      if (ret.Sucesso)
+        return new ObjectResult(ret.Clientes);
+      else
+        return BadRequest(ret.Mensagem);
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> BuscarClientePorId(int id)
     {
-      var cliente = await facade.BuscarClienteAsync(id);
+      var ret = await facade.BuscarClienteAsync(id);
 
-      if (cliente == null)
-        return await Task.FromResult(NotFound());
-
-      return new ObjectResult(cliente);
+      if (ret.Sucesso)
+      {
+        if (ret.Cliente == null)
+          return NotFound();
+        else
+          return new ObjectResult(ret.Cliente);
+      }
+      else
+      {
+        return BadRequest(ret.Mensagem);
+      }
     }
 
     [HttpPost]

@@ -18,20 +18,32 @@ namespace API.Controllers
     }
 
     [HttpGet]
-    public async Task<IEnumerable<ItemDTO>> ListarItens()
+    public async Task<IActionResult> ListarItens()
     {
-      return await facade.BuscarItensAsync();
+      var ret = await facade.BuscarItensAsync();
+
+      if (ret.Sucesso)
+        return new ObjectResult(ret.Itens);
+      else
+        return BadRequest(ret.Mensagem);
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> BuscarItemPorId(int id)
     {
-      var item = await facade.BuscarItemAsync(id);
+      var ret = await facade.BuscarItemAsync(id);
 
-      if (item == null)
-        return await Task.FromResult(NotFound());
-
-      return new ObjectResult(item);
+      if (ret.Sucesso)
+      {
+        if (ret.Item == null)
+          return NotFound();
+        else
+          return new ObjectResult(ret.Item);
+      }
+      else
+      {
+        return BadRequest(ret.Mensagem);
+      }
     }
 
     [HttpPost]

@@ -23,20 +23,32 @@ namespace API.Controllers
     }
 
     [HttpGet]
-    public async Task<IEnumerable<PedidoDTO>> ListarPedidos()
+    public async Task<IActionResult> ListarPedidos()
     {
-      return await facade.BuscarPedidosAsync();
+      var ret = await facade.BuscarPedidosAsync();
+
+      if (ret.Sucesso)
+        return new ObjectResult(ret.Pedidos);
+      else
+        return BadRequest(ret.Mensagem);
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> BuscarPedidoPorId(Guid id)
     {
-      var pedido = await facade.BuscarPedidoAsync(id);
+      var ret = await facade.BuscarPedidoAsync(id);
 
-      if (pedido == null)
-        return await Task.FromResult(NotFound());
-
-      return new ObjectResult(pedido);
+      if (ret.Sucesso)
+      {
+        if (ret.Pedido == null)
+          return NotFound();
+        else
+          return new ObjectResult(ret.Pedido);
+      }
+      else
+      {
+        return BadRequest(ret.Mensagem);
+      }
     }
 
     [HttpPost]
