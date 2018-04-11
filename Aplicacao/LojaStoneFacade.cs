@@ -51,7 +51,7 @@ namespace Aplicacao
       catch (Exception ex)
       {
         logger.LogError(ex, "Erro.");
-        return new RetornoBuscarClientes() { Sucesso = true, Mensagem = MENSAGEM_ERRO_GERNERICO };
+        return new RetornoBuscarClientes() { Sucesso = false, Mensagem = MENSAGEM_ERRO_GERNERICO };
       }
     }
 
@@ -66,7 +66,7 @@ namespace Aplicacao
       catch (Exception ex)
       {
         logger.LogError(ex, "Erro.", id);
-        return new RetornoBuscarCliente() { Sucesso = true, Mensagem = MENSAGEM_ERRO_GERNERICO };
+        return new RetornoBuscarCliente() { Sucesso = false, Mensagem = MENSAGEM_ERRO_GERNERICO };
       }
     }
 
@@ -107,7 +107,10 @@ namespace Aplicacao
         if (!cliente.EValidoParaAtualizar(out mensagemValidacao))
           return new RetornoAtualizarCliente() { Sucesso = false, Mensagem = mensagemValidacao };
 
-        await repositorioCliente.AtualizarClienteAsync(cliente);
+        var atualizou = await repositorioCliente.AtualizarClienteAsync(cliente);
+
+        if (!atualizou)
+          return new RetornoAtualizarCliente() { Sucesso = false, Mensagem = "O Cliente não pode ser atualizado, versão inválida." };
 
         return new RetornoAtualizarCliente() { Sucesso = true, Id = cliente.Id };
       }
@@ -149,7 +152,7 @@ namespace Aplicacao
       {
         var item = await repositorioItem.BuscarItemAsync(id);
 
-        return new RetornoBuscarItem() { Sucesso = false, Item = Mapper.Map<ItemDTO>(item) };
+        return new RetornoBuscarItem() { Sucesso = true, Item = Mapper.Map<ItemDTO>(item) };
       }
       catch (Exception ex)
       {
@@ -195,7 +198,10 @@ namespace Aplicacao
         if (!item.EValidoParaAtualizar(out mensagemValidacao))
           return new RetornoAtualizarItem() { Sucesso = false, Mensagem = mensagemValidacao };
 
-        await repositorioItem.AtualizarItemAsync(item);
+        var atualizou = await repositorioItem.AtualizarItemAsync(item);
+
+        if (!atualizou)
+          return new RetornoAtualizarItem() { Sucesso = false, Mensagem = "O item não pode ser atualizado, versão inválida." };
 
         return new RetornoAtualizarItem() { Sucesso = true, Id = item.Id };
       }
@@ -238,7 +244,7 @@ namespace Aplicacao
       {
         var pedido = await repositorioPedido.BuscarPedidoAsync(id);
 
-        return new RetornoBuscarPedido() { Sucesso = false, Pedido = Mapper.Map<PedidoDTO>(pedido) };
+        return new RetornoBuscarPedido() { Sucesso = true, Pedido = Mapper.Map<PedidoDTO>(pedido) };
       }
       catch (Exception ex)
       {
@@ -260,11 +266,26 @@ namespace Aplicacao
         if (criacaoPedidoDTO.Itens == null || !criacaoPedidoDTO.Itens.Any())
           return new RetornoCriarPedido() { Sucesso = false, Mensagem = "criacaoPedidoDTO.Itens nulo ou vazio." };
 
-        var cliente = Mapper.Map<Cliente>(criacaoPedidoDTO.Cliente);
-        var itens = criacaoPedidoDTO.Itens.Select(itemDTO => Mapper.Map<Item>(itemDTO)).ToList();
+        var cliente = await repositorioCliente.BuscarClienteAsync(criacaoPedidoDTO.Cliente.Id, criacaoPedidoDTO.Cliente.Versao);
+
+        List<Item> itens = new List<Item>();
+
+        foreach (var itemDTO in criacaoPedidoDTO.Itens)
+        {
+          var item = await repositorioItem.BuscarItemAsync(itemDTO.Id, itemDTO.Versao);
+
+          if (item == null)
+            return new RetornoCriarPedido() { Sucesso = false, Mensagem = $"Item inválido ou não encontrado. Id {itemDTO.Id}" };
+
+          itens.Add(item);
+        }
 
         var pedido = FabricaPedido.CriarPedido(cliente, itens);
 
+        string mensagemValidacao;
+        if (!pedido.EValidoParaCriar(out mensagemValidacao))
+          return new RetornoCriarPedido() { Sucesso = false, Mensagem = mensagemValidacao };
+        
         await repositorioPedido.CriarPedidoAsync(pedido);
 
         servicoMensageria.GuardarCopia(pedido);

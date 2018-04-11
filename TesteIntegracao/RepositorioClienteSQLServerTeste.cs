@@ -78,7 +78,7 @@ namespace TesteIntegracao
       ret.Wait();
       Assert.IsTrue(cliente.Id > 0);
 
-      var ret1 = repositorio.BuscarClienteAsync(cliente.Id);
+      var ret1 = repositorio.BuscarClienteAsync(cliente.Id, null);
       ret1.Wait();
       Assert.IsNotNull(ret1.Result);
       Assert.IsTrue(ret1.Result.Id == cliente.Id);

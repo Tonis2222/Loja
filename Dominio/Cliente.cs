@@ -10,6 +10,7 @@ namespace Dominio
     public string Nome { get; set; }
     public long CPF { get; set; }
     public Endereco Endereco { get; set; }
+    public byte[] Versao { get; set; }
 
     public bool EValidoParaCadastrar(out string mensagemValidacao)
     {

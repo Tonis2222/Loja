@@ -18,6 +18,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{BF082063-4F33-45E2-BA20-2FD626BF5DE1}"
 	ProjectSection(SolutionItems) = preProject
 		01-Criacao das tabelas.sql = 01-Criacao das tabelas.sql
+		02-RowVersion.sql = 02-RowVersion.sql
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServicoMensageriaRabbitMQ", "ServicoMensageriaRabbitMQ\ServicoMensageriaRabbitMQ.csproj", "{AB52F96E-92D8-449A-BDE3-44192113398A}"

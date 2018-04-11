@@ -66,7 +66,7 @@ namespace TesteIntegracao
       retorno.Wait();
 
       Assert.IsTrue(item.Id > 0);
-      var retorno2 = repositorio.BuscarItemAsync(item.Id);
+      var retorno2 = repositorio.BuscarItemAsync(item.Id, null);
       retorno2.Wait();
 
       var itemBusca = retorno2.Result;

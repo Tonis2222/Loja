@@ -15,12 +15,12 @@ values(@descricao, @valor)
 select @id = @@identity";
 
     private const string queryUpdatetItem = @"
-update Item set descricao = @descricao, valor = @valor where id = @id";
+update Item set descricao = @descricao, valor = @valor where id = @id and versao = @versao";
 
     private const string queryBuscaItens = @"
-select id, descricao, valor from Item";
+select id, descricao, valor, versao from Item";
 
-    private const string queryBuscaItemPoId = queryBuscaItens + @" where id = @id";
+    private const string queryBuscaItemPoId = queryBuscaItens + @" where id = @id and versao = isnull(convert(binary(8),@versao), versao)";
 
     private string connectionString;
     public RepositorioItemSQLServer(string connectionString)
@@ -47,7 +47,7 @@ select id, descricao, valor from Item";
       }
     }
 
-    public async Task AtualizarItemAsync(Item item)
+    public async Task<bool> AtualizarItemAsync(Item item)
     {
       using (SqlConnection connection = new SqlConnection(connectionString))
       {
@@ -58,7 +58,9 @@ select id, descricao, valor from Item";
           command.Parameters.Add(new SqlParameter("@descricao", item.Descricao));
           command.Parameters.Add(new SqlParameter("@valor", item.Valor));
           command.Parameters.Add(new SqlParameter("@id", item.Id));
+          command.Parameters.Add(new SqlParameter("@versao", item.Versao));
           var numeroLinhasAfetadas = await command.ExecuteNonQueryAsync();
+          return numeroLinhasAfetadas > 0;
         }
       }
     }
@@ -77,19 +79,25 @@ select id, descricao, valor from Item";
 
           while (await rd.ReadAsync())
           {
-            listaRetorno.Add(new Item()
-            {
-              Id = Convert.ToInt32(rd["id"]),
-              Descricao = Convert.ToString(rd["descricao"]),
-              Valor = Convert.ToDecimal(rd["valor"])
-            });
+            listaRetorno.Add(LerItem(rd));
           }
         }
       }
       return listaRetorno;
     }
 
-    public async Task<Item> BuscarItemAsync(int id)
+    private static Item LerItem(SqlDataReader rd)
+    {
+      return new Item()
+      {
+        Id = Convert.ToInt32(rd["id"]),
+        Descricao = Convert.ToString(rd["descricao"]),
+        Valor = Convert.ToDecimal(rd["valor"]),
+        Versao = (byte[])rd["versao"]
+      };
+    }
+
+    public async Task<Item> BuscarItemAsync(int id, byte[] versao)
     {
       using (SqlConnection connection = new SqlConnection(connectionString))
       {
@@ -99,16 +107,16 @@ select id, descricao, valor from Item";
         {
           command.Parameters.Add(new SqlParameter("@id", id));
 
+          if (versao != null)
+            command.Parameters.Add(new SqlParameter("@versao", versao) { SqlDbType = System.Data.SqlDbType.VarBinary });
+          else
+            command.Parameters.Add(new SqlParameter("@versao", DBNull.Value));
+
           var rd = await command.ExecuteReaderAsync();
 
           if (await rd.ReadAsync())
           {
-            return new Item()
-            {
-              Id = Convert.ToInt32(rd["id"]),
-              Descricao = Convert.ToString(rd["descricao"]),
-              Valor = Convert.ToDecimal(rd["valor"])
-            };
+            return LerItem(rd);
           }
           else
           {

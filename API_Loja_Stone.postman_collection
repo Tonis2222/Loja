@@ -1,7 +1,7 @@
 {
 	"info": {
 		"name": "Loja Stone",
-		"_postman_id": "9393ae23-5e3c-78c3-f9ea-a790362abbca",
+		"_postman_id": "323da649-d946-8090-78fb-b4fe990f289b",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -32,7 +32,7 @@
 					},
 					"response": [
 						{
-							"id": "430e9078-711c-48c1-817b-0aa2b3649cbf",
+							"id": "41e68fcb-99a3-4fad-bac9-0677ecc55cf5",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -89,7 +89,7 @@
 					},
 					"response": [
 						{
-							"id": "b81442b7-a7cc-47f8-a46e-3a9be78cb9f1",
+							"id": "c7fa5247-f3ba-4893-a7ac-60596674ae03",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -150,7 +150,7 @@
 					},
 					"response": [
 						{
-							"id": "1a16ea4a-adaa-4520-8ec9-1841704e4cf2",
+							"id": "25c89d3a-58f3-4299-ad53-d84ba36fcbe5",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -194,7 +194,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": " {\r\n  \"Id\":\"2\",\r\n  \"Nome\": \"Teste 1\",\r\n  \"CPF\": \"12345678910\",\r\n  \"Endereco\": {\r\n    \"Rua\": \"Rua Teste\",\r\n    \"Numero\": \"3\",\r\n    \"Complemento\": \"101\"\r\n  }\r\n}"
+							"raw": " {\r\n  \"Id\":\"4\",\r\n  \"versao\": \"AAAAAAAAB9Q=\",\r\n  \"Nome\": \"Teste 1\",\r\n  \"CPF\": \"12345678910\",\r\n  \"Endereco\": {\r\n    \"Rua\": \"Rua Teste\",\r\n    \"Numero\": \"4633\",\r\n    \"Complemento\": \"101\"\r\n  }\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:54602/api/cliente",
@@ -211,7 +211,7 @@
 					},
 					"response": [
 						{
-							"id": "cc23a3e5-3044-4972-a114-a7a1453168cb",
+							"id": "901aa9f2-4e1a-4522-ad1d-1e9aab0a73f4",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -272,7 +272,7 @@
 					},
 					"response": [
 						{
-							"id": "8b63439c-26b6-4bb5-9c95-3827f131a941",
+							"id": "76efee6e-ee73-420b-a628-57d9b3176243",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -314,7 +314,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:54602/api/item/1",
+							"raw": "http://localhost:54602/api/item/6",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -323,13 +323,13 @@
 							"path": [
 								"api",
 								"item",
-								"1"
+								"6"
 							]
 						}
 					},
 					"response": [
 						{
-							"id": "25d8fd31-2dec-44b9-9f84-4c496decef13",
+							"id": "c4677ce5-5fc6-447d-a3ab-a2a8893620d0",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -390,7 +390,7 @@
 					},
 					"response": [
 						{
-							"id": "07b0d533-b776-4ca3-b4a0-d457743e5afb",
+							"id": "57b06a76-f3c3-45a1-baef-194fc1fa6b63",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -434,7 +434,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": " {\r\n  \"Id\":\"3\",\r\n  \"Descricao\": \"Item Teste 2\",\r\n  \"Valor\": \"13.99\"\r\n}"
+							"raw": " {\r\n  \"Id\":\"3\",\r\n  \"Descricao\": \"Item Teste 2\",\r\n  \"Valor\": \"53.99\",\r\n  \"versao\": \"AAAAAAAAB9s=\"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:54602/api/item",
@@ -451,7 +451,7 @@
 					},
 					"response": [
 						{
-							"id": "53df28cc-c437-4ca7-b5fc-2f75b7481512",
+							"id": "b43f568c-abd4-42e7-825d-23f5b4b0a9f0",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -512,7 +512,7 @@
 					},
 					"response": [
 						{
-							"id": "9f57f4e3-bef3-4b8b-a4d6-0277732d3578",
+							"id": "615419be-c27b-44f0-a254-b798cec5d9fa",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -556,7 +556,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"Cliente\": {\n        \"id\": 3,\n        \"nome\": \"Teste 221\",\n        \"cpf\": 12345678911,\n        \"endereco\": {\n            \"rua\": \"Rua Teste\",\n            \"numero\": 13,\n            \"complemento\": \"101\"\n        }\n    },\n    \"Itens\": [\n        {\n            \"id\": 1,\n            \"descricao\": \"Item Teste 1\",\n            \"valor\": 23.99\n        },\n        {\n            \"id\": 2,\n            \"descricao\": \"Item Teste 2\",\n            \"valor\": 13.99\n        }\n    ]\n}"
+							"raw": "{  \r\n   \"Cliente\":{  \r\n      \"id\":4,\r\n      \"versao\":\"AAAAAAAAZZE=\"\r\n   },\r\n   \"Itens\":[  \r\n      {  \r\n         \"id\":1,\r\n         \"versao\":\"AAAAAAAAB9o=\"\r\n      },\r\n      {  \r\n         \"id\":2,\r\n         \"versao\":\"AAAAAAAAB9o=\"\r\n      },\r\n      {  \r\n         \"id\":3,\r\n         \"versao\":\"AAAAAAAARlE=\"\r\n      }\r\n   ]\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:54602/api/Pedido",
@@ -573,7 +573,7 @@
 					},
 					"response": [
 						{
-							"id": "88256311-c740-4366-9aa1-6e126fe5fdbd",
+							"id": "1f3bc834-c7b5-488d-9970-c65811a995af",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -615,7 +615,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:54602/api/Pedido/d7779fbc-b467-4726-a226-a091d29f54a0",
+							"raw": "http://localhost:54602/api/Pedido/564b579c-402e-438f-ae42-ee173f625f06",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -624,13 +624,13 @@
 							"path": [
 								"api",
 								"Pedido",
-								"d7779fbc-b467-4726-a226-a091d29f54a0"
+								"564b579c-402e-438f-ae42-ee173f625f06"
 							]
 						}
 					},
 					"response": [
 						{
-							"id": "96ddbb18-7372-4dea-bf72-0716eb3b9403",
+							"id": "577dec62-e957-41e5-bfc1-37028b01ae57",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -672,7 +672,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:54602/api/Pedido/Cancelar/d7779fbc-b467-4726-a226-a091d29f54a0",
+							"raw": "http://localhost:54602/api/Pedido/Cancelar/564b579c-402e-438f-ae42-ee173f625f06",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -682,13 +682,13 @@
 								"api",
 								"Pedido",
 								"Cancelar",
-								"d7779fbc-b467-4726-a226-a091d29f54a0"
+								"564b579c-402e-438f-ae42-ee173f625f06"
 							]
 						}
 					},
 					"response": [
 						{
-							"id": "0248a050-3d87-4f9b-a455-20928a49cd22",
+							"id": "0ea92fab-c258-4e35-aeac-802e84c9ad33",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",

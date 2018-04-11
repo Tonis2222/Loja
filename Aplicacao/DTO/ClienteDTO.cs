@@ -10,6 +10,6 @@ namespace Aplicacao.DTO
     public string Nome { get; set; }
     public long CPF { get; set; }
     public EnderecoDTO Endereco { get; set; }
-
+    public byte[] Versao { get; set; }
   }
 }

@@ -6,7 +6,7 @@ namespace Aplicacao.DTO
 {
   public class CriacaoPedidoDTO
   {
-    public ClienteDTO Cliente { get; set; }
-    public List<ItemDTO> Itens { get; set; }
+    public IdVersaoDTO Cliente { get; set; }
+    public List<IdVersaoDTO> Itens { get; set; }
   }
 }
