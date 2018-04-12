@@ -312,9 +312,6 @@ namespace Aplicacao
           return new RetornoCancelarPedido() { Sucesso = false, Mensagem = "Pedido não encontrado." };
 
         string mensagemValidacao;
-        if (!pedido.EValidoParaCancelar(out mensagemValidacao))
-          return new RetornoCancelarPedido() { Sucesso = false, Mensagem = mensagemValidacao };
-
         if (!pedido.Cancelar(out mensagemValidacao))
           return new RetornoCancelarPedido() { Sucesso = false, Mensagem = mensagemValidacao };
 

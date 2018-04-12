@@ -97,5 +97,34 @@ namespace TesteUnitario
       Assert.AreEqual(resultadoEsperado, resultado);
       Assert.AreEqual(mensagemEsperada, mensagem);
     }
+
+    [TestMethod]
+    public void NaoPodeCancelarPedidoCancelado()
+    {
+      bool resultadoEsperado = false;
+      string mensagemEsperada = "O Pedido deve estar ativo.";
+
+      var pedido = FabricaPedido.CriarPedido(clienteParaTeste, itensParaTeste);
+      pedido.Estado = EstadoPedido.Cancelado;
+
+      string mensagem;
+      var resultado = pedido.EValidoParaCancelar(out mensagem);
+
+      Assert.AreEqual(resultadoEsperado, resultado);
+      Assert.AreEqual(mensagemEsperada, mensagem);
+    }
+
+    [TestMethod]
+    public void DeveCancelarPedidoAtivo()
+    {
+      bool resultadoEsperado = true;
+      
+      var pedido = FabricaPedido.CriarPedido(clienteParaTeste, itensParaTeste);
+      
+      string mensagem;
+      var resultado = pedido.EValidoParaCancelar(out mensagem);
+
+      Assert.AreEqual(resultadoEsperado, resultado);
+    }
   }
 }
